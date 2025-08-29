@@ -36,7 +36,6 @@ class RestockServiceTest {
         product4 = new Product(4L, "Charger", 7, 20, true);
     }
 
-
     @Test
     void checkForRestockValid() {
         RestockRequest request = new RestockRequest();
