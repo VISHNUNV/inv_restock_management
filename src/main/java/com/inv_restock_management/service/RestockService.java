@@ -67,15 +67,12 @@ public class RestockService {
         }
     }
 
-    private static int getPriorityOrder(Priority priority)
+    private int getPriorityOrder(Priority priority)
     {
-        int order = 0;
-        switch (priority)
-        {
-            case HIGH -> order = 1;
-            case MEDIUM -> order = 2;
-            case LOW -> order = 3;
-        }
-        return order;
+        return switch (priority) {
+            case HIGH -> 1;
+            case MEDIUM -> 2;
+            case LOW -> 3;
+        };
     }
 }
