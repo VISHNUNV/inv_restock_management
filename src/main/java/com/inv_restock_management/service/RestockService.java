@@ -10,10 +10,14 @@ import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
+import java.util.Objects;
 
 @Service
 public class RestockService {
     public RestockResponse checkForRestock(RestockRequest restockRequest) {
+        Objects.requireNonNull(restockRequest, "Restock Request Should Not Be Null");
+        Objects.requireNonNull(restockRequest.getProducts(), "Restock Products Should Not Be Null");
+
         List<Product> restockProducts = getRestockRequiredProducts(restockRequest.getProducts());
         List<Restock> restocks = prepareRestockResponse(restockProducts);
 

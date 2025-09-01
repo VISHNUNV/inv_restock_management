@@ -173,4 +173,16 @@ class RestockServiceTest {
 
         Assertions.assertEquals(Priority.LOW, restockResponse.restockList().get(0).priority());
     }
+
+    @Test
+    void checkForRequestNull() {
+        NullPointerException nullPointerException = assertThrows(NullPointerException.class, () -> service.checkForRestock(null));
+        Assertions.assertEquals("Restock Request Should Not Be Null", nullPointerException.getMessage());
+    }
+
+    @Test
+    void checkForRequestProductsNull() {
+        NullPointerException nullPointerException = assertThrows(NullPointerException.class, () -> service.checkForRestock(new RestockRequest()));
+        Assertions.assertEquals("Restock Products Should Not Be Null", nullPointerException.getMessage());
+    }
 }

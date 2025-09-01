@@ -61,7 +61,7 @@ class RestockControllerTest {
     @Test
     void testArgumentInvalid() throws Exception {
         RestockRequest request = new RestockRequest();
-        product1 = new Product(null, "Laptop", 2, 5, true);
+        product1 = new Product(null, null, null, null, null);
         productList.add(product1);
         productList.add(product2);
         productList.add(product3);
