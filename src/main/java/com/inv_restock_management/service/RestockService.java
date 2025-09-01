@@ -45,7 +45,8 @@ public class RestockService {
         }
 
         return restocks.stream()
-                .sorted(Comparator.comparing(Restock::priority, Comparator.comparingInt(Priority::getOrder))
+                .sorted(Comparator
+                        .comparingInt((Restock r) -> getPriorityOrder(r.priority()))
                         .thenComparing(Restock::name))
                 .toList();
     }
@@ -64,5 +65,17 @@ public class RestockService {
         } else {
             return Priority.LOW;
         }
+    }
+
+    private static int getPriorityOrder(Priority priority)
+    {
+        int order = 0;
+        switch (priority)
+        {
+            case HIGH -> order = 1;
+            case MEDIUM -> order = 2;
+            case LOW -> order = 3;
+        }
+        return order;
     }
 }
